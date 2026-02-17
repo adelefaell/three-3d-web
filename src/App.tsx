@@ -40,7 +40,7 @@ export default function App() {
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'}>
           <Routes>
             <Route path="/" element={<Layout header={<AppHeader />} footer={<AppFooter />} />}>
               <Route index element={<ViewerPage />} />
