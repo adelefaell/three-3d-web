@@ -1,0 +1,275 @@
+/* App shell */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 320px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--header-bg, #1a1a1a);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.app-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-footer {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  color: var(--muted, #888);
+  font-size: 0.875rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Viewer page */
+.viewer-page {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.viewer-canvas-wrap {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+}
+
+.viewer-canvas-wrap canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.viewer-panel {
+  width: 280px;
+  flex-shrink: 0;
+  padding: 1rem;
+  overflow-y: auto;
+  background: var(--panel-bg, #252525);
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 768px) {
+  .viewer-page {
+    flex-direction: column;
+  }
+  .viewer-panel {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+/* Controls */
+.viewer-controls h2 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.viewer-controls h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted, #999);
+}
+
+.viewer-controls section:first-of-type h3 {
+  margin-top: 0;
+}
+
+.control-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.control-group button {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.control-group button[aria-pressed="true"] {
+  background: var(--accent, #646cff);
+  border-color: var(--accent, #646cff);
+}
+
+.control-label {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 0.8125rem;
+  color: var(--muted, #999);
+}
+
+.swatches {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.swatch {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 4px;
+}
+
+.swatch[aria-pressed="true"] {
+  border-color: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+.control-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.control-slider,
+.control-color {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+}
+
+.control-slider input[type="range"],
+.control-color input[type="color"] {
+  width: 100%;
+}
+
+.control-color input[type="color"] {
+  height: 2rem;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.meta-status {
+  font-size: 0.75rem;
+  color: var(--muted, #888);
+}
+
+/* Loader overlay */
+.loader-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.loader-box {
+  padding: 1.5rem;
+  background: #2a2a2a;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 200px;
+}
+
+.loader-bar-wrap {
+  width: 200px;
+  height: 8px;
+  background: #444;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 auto 0.5rem;
+}
+
+.loader-bar {
+  height: 100%;
+  background: var(--accent, #646cff);
+  transition: width 0.15s ease;
+}
+
+.loader-error {
+  color: #e06060;
+  margin: 0 0 0.5rem;
+}
+
+/* Stats overlay */
+.stats-overlay {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: monospace;
+  z-index: 5;
+}
+
+/* Error fallback (ErrorBoundary) */
+.error-fallback {
+  padding: 2rem;
+  text-align: center;
+}
+
+.error-fallback h2 {
+  margin: 0 0 0.5rem;
+}
+
+.error-fallback button {
+  margin-top: 1rem;
+}
+
+/* About / Debug pages */
+.about-page,
+.debug-page {
+  padding: 2rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.about-page h1,
+.debug-page h1 {
+  margin: 0 0 1rem;
+}
+
+.debug-page section {
+  margin: 1.5rem 0;
+}
+
+.debug-page pre {
+  overflow: auto;
+  padding: 1rem;
+  background: #1a1a1a;
+  border-radius: 4px;
+  font-size: 0.8125rem;
+}
+
+.debug-page ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
